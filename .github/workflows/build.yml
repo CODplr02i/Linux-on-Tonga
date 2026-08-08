@@ -2,7 +2,7 @@ name: Tonga Kernel Build
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04.4
     steps:
       - uses: actions/checkout@v5
       - name: Install deps
@@ -12,6 +12,11 @@ jobs:
           sed -i 's/if (!atomic_fetch_or(NOHZ_KICK_MASK, nohz_flags(cpu)))/if (0)/' kernel/sched/core.c || true
           sed -i 's/static inline bool prefer_spread_on_idle(int cpu)/static inline bool prefer_spread_on_idle(int cpu, bool __unused)/' kernel/sched/walt.h || true
           grep -q "^int alarm_debug" kernel/time/alarmtimer.c || sed -i '1i int alarm_debug=0;' kernel/time/alarmtimer.c
+          # disable broken qcom data modules
+          sed -i 's/CONFIG_RMNET_SHLD=y/CONFIG_RMNET_SHLD=n/' arch/arm64/configs/vendor/tonga_halium_defconfig || true
+          sed -i 's/CONFIG_RMNET_PERF=y/CONFIG_RMNET_PERF=n/' arch/arm64/configs/vendor/tonga_halium_defconfig || true
+          echo "CONFIG_RMNET_SHLD=n" >> arch/arm64/configs/vendor/tonga_halium_defconfig
+          echo "CONFIG_RMNET_PERF=n" >> arch/arm64/configs/vendor/tonga_halium_defconfig
           echo "CONFIG_NO_HZ_COMMON=y" >> arch/arm64/configs/vendor/tonga_halium_defconfig
           echo "CONFIG_NO_HZ_IDLE=y" >> arch/arm64/configs/vendor/tonga_halium_defconfig
           echo "CONFIG_NO_HZ=y" >> arch/arm64/configs/vendor/tonga_halium_defconfig
@@ -20,8 +25,7 @@ jobs:
           export ARCH=arm64
           export CROSS_COMPILE=aarch64-linux-gnu-
           make mrproper
-          rm -rf out
-          mkdir out
+          rm -rf out; mkdir out
           make O=out mrproper
           make O=out vendor/tonga_halium_defconfig
           make O=out olddefconfig
