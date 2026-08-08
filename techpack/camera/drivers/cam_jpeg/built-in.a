@@ -1,0 +1,21 @@
+!<thin>
+//                                              282       `
+jpeg_hw/jpeg_enc_hw/jpeg_enc_dev.o/
+jpeg_hw/jpeg_enc_hw/jpeg_enc_core.o/
+jpeg_hw/jpeg_enc_hw/jpeg_enc_soc.o/
+jpeg_hw/jpeg_dma_hw/jpeg_dma_dev.o/
+jpeg_hw/jpeg_dma_hw/jpeg_dma_core.o/
+jpeg_hw/jpeg_dma_hw/jpeg_dma_soc.o/
+jpeg_hw/cam_jpeg_hw_mgr.o/
+cam_jpeg_dev.o/
+cam_jpeg_context.o/
+
+/0              0           0     0     644     160792    `
+/36             0           0     0     644     161888    `
+/73             0           0     0     644     128744    `
+/109            0           0     0     644     160968    `
+/145            0           0     0     644     137976    `
+/182            0           0     0     644     128744    `
+/218            0           0     0     644     277584    `
+/245            0           0     0     644     218624    `
+/261            0           0     0     644     39792     `

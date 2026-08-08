@@ -1,0 +1,1 @@
+cmd_drivers/misc/awinic/built-in.a :=  rm -f drivers/misc/awinic/built-in.a; aarch64-linux-gnu-ar rcSTPD drivers/misc/awinic/built-in.a drivers/misc/awinic/aw8624/built-in.a drivers/misc/awinic/aw8695/built-in.a drivers/misc/awinic/aw8697/built-in.a

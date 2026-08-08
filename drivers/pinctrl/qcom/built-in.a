@@ -1,0 +1,12 @@
+!<thin>
+//                                              90        `
+pinctrl-msm.o/
+pinctrl-spmi-gpio.o/
+pinctrl-spmi-mpp.o/
+pinctrl-lito.o/
+pinctrl-lagoon.o/
+/0              0           0     0     644     265360    `
+/15             0           0     0     644     208944    `
+/36             0           0     0     644     194016    `
+/56             0           0     0     644     272464    `
+/72             0           0     0     644     278632    `

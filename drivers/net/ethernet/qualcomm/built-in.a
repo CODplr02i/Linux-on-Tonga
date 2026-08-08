@@ -1,0 +1,16 @@
+!<thin>
+//                                              162       `
+rmnet/rmnet_config.o/
+rmnet/rmnet_vnd.o/
+rmnet/rmnet_handlers.o/
+rmnet/rmnet_map_data.o/
+rmnet/rmnet_map_command.o/
+rmnet/rmnet_descriptor.o/
+rmnet/rmnet_genl.o/
+/0              0           0     0     644     368352    `
+/22             0           0     0     644     269152    `
+/41             0           0     0     644     449224    `
+/65             0           0     0     644     391096    `
+/89             0           0     0     644     261336    `
+/116            0           0     0     644     391872    `
+/142            0           0     0     644     306528    `

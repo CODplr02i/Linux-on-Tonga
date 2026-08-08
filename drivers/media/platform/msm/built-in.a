@@ -1,0 +1,15 @@
+!<thin>
+//                                              106       `
+npu/npu_dbg.o/
+npu/npu_dev.o/
+npu/npu_debugfs.o/
+npu/npu_host_ipc.o/
+npu/npu_hw_access.o/
+npu/npu_mgr.o/
+
+/0              0           0     0     644     159000    `
+/15             0           0     0     644     340824    `
+/30             0           0     0     644     183608    `
+/49             0           0     0     644     161320    `
+/69             0           0     0     644     184000    `
+/90             0           0     0     644     348792    `

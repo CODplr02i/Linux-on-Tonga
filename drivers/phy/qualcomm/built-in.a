@@ -1,0 +1,14 @@
+!<thin>
+//                                              146       `
+phy-qcom-ufs.o/
+phy-qcom-ufs-qrbtc-sdm845.o/
+phy-qcom-ufs-qmp-v4.o/
+phy-qcom-ufs-qmp-v4-lito.o/
+phy-qcom-ufs-qmp-v3-660.o/
+phy-qcom-ufs-qmp-v3.o/
+/0              0           0     0     644     167672    `
+/16             0           0     0     644     105072    `
+/45             0           0     0     644     116672    `
+/68             0           0     0     644     115264    `
+/96             0           0     0     644     110368    `
+/123            0           0     0     644     110424    `

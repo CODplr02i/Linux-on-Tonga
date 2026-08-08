@@ -1,0 +1,17 @@
+!<thin>
+//                                              226       `
+qualcomm/rmnet/rmnet_config.o/
+qualcomm/rmnet/rmnet_vnd.o/
+qualcomm/rmnet/rmnet_handlers.o/
+qualcomm/rmnet/rmnet_map_data.o/
+qualcomm/rmnet/rmnet_map_command.o/
+qualcomm/rmnet/rmnet_descriptor.o/
+qualcomm/rmnet/rmnet_genl.o/
+
+/0              0           0     0     644     368352    `
+/31             0           0     0     644     269152    `
+/59             0           0     0     644     449224    `
+/92             0           0     0     644     391096    `
+/125            0           0     0     644     261336    `
+/161            0           0     0     644     391872    `
+/196            0           0     0     644     306528    `

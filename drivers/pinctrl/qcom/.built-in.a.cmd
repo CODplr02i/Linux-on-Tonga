@@ -1,0 +1,1 @@
+cmd_drivers/pinctrl/qcom/built-in.a :=  rm -f drivers/pinctrl/qcom/built-in.a; aarch64-linux-gnu-ar rcSTPD drivers/pinctrl/qcom/built-in.a drivers/pinctrl/qcom/pinctrl-msm.o drivers/pinctrl/qcom/pinctrl-spmi-gpio.o drivers/pinctrl/qcom/pinctrl-spmi-mpp.o drivers/pinctrl/qcom/pinctrl-lito.o drivers/pinctrl/qcom/pinctrl-lagoon.o

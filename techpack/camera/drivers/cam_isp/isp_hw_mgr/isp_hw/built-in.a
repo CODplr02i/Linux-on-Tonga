@@ -1,0 +1,49 @@
+!<thin>
+//                                              754       `
+ife_csid_hw/cam_ife_csid_dev.o/
+ife_csid_hw/cam_ife_csid_soc.o/
+ife_csid_hw/cam_ife_csid_core.o/
+ife_csid_hw/cam_ife_csid17x.o/
+ife_csid_hw/cam_ife_csid_lite17x.o/
+vfe_hw/cam_vfe_soc.o/
+vfe_hw/cam_vfe_dev.o/
+vfe_hw/cam_vfe_core.o/
+vfe_hw/vfe_bus/cam_vfe_bus.o/
+vfe_hw/vfe_bus/cam_vfe_bus_ver2.o/
+vfe_hw/vfe_bus/cam_vfe_bus_rd_ver1.o/
+vfe_hw/vfe_bus/cam_vfe_bus_ver3.o/
+vfe_hw/vfe_top/cam_vfe_camif_lite_ver2.o/
+vfe_hw/vfe_top/cam_vfe_top.o/
+vfe_hw/vfe_top/cam_vfe_top_common.o/
+vfe_hw/vfe_top/cam_vfe_top_ver3.o/
+vfe_hw/vfe_top/cam_vfe_top_ver2.o/
+vfe_hw/vfe_top/cam_vfe_camif_ver2.o/
+vfe_hw/vfe_top/cam_vfe_camif_ver3.o/
+vfe_hw/vfe_top/cam_vfe_rdi.o/
+vfe_hw/vfe_top/cam_vfe_fe_ver1.o/
+vfe_hw/vfe_top/cam_vfe_camif_lite_ver3.o/
+vfe_hw/vfe17x/cam_vfe.o/
+
+/0              0           0     0     644     158632    `
+/32             0           0     0     644     146672    `
+/64             0           0     0     644     424080    `
+/97             0           0     0     644     168120    `
+/128            0           0     0     644     157320    `
+/164            0           0     0     644     157672    `
+/186            0           0     0     644     145784    `
+/208            0           0     0     644     183824    `
+/231            0           0     0     644     130152    `
+/261            0           0     0     644     314232    `
+/296            0           0     0     644     206552    `
+/334            0           0     0     644     330392    `
+/369            0           0     0     644     189944    `
+/411            0           0     0     644     128104    `
+/441            0           0     0     644     147360    `
+/478            0           0     0     644     196856    `
+/513            0           0     0     644     198400    `
+/548            0           0     0     644     207144    `
+/585            0           0     0     644     258280    `
+/622            0           0     0     644     190120    `
+/652            0           0     0     644     183800    `
+/686            0           0     0     644     235104    `
+/728            0           0     0     644     216504    `
