@@ -1,0 +1,27 @@
+name: Tonga Kernel Build
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install deps
+        run: |
+          sudo apt update
+          sudo apt install -y build-essential clang lld llvm bc bison flex libssl-dev libelf-dev dwarves python3
+      - name: Build
+        run: |
+          cd kernel-mtk
+          export ARCH=arm64
+          export SUBARCH=arm64
+          make O=out vendor/tonga_halium_defconfig
+          make O=out -j$(nproc) CC=clang LLVM=1
+      - name: Upload Image
+        uses: actions/upload-artifact@v4
+        with:
+          name: kernel
+          path: kernel-mtk/out/arch/arm64/boot/Image*
