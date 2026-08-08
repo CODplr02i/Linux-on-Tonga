@@ -6,22 +6,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - name: Install deps
         run: |
           sudo apt update
-          sudo apt install -y build-essential clang lld llvm bc bison flex libssl-dev libelf-dev dwarves python3
+          sudo apt install -y build-essential clang lld llvm bc bison flex libssl-dev libelf-dev dwarves python3 cpio
+          sudo apt install -y gcc-aarch64-linux-gnu
       - name: Build
         run: |
-          cd kernel-mtk
           export ARCH=arm64
           export SUBARCH=arm64
+          export CROSS_COMPILE=aarch64-linux-gnu-
+          export CLANG_TRIPLE=aarch64-linux-gnu-
+          mkdir -p out
           make O=out vendor/tonga_halium_defconfig
-          make O=out -j$(nproc) CC=clang LLVM=1
+          make O=out -j$(nproc) CC=clang LLVM=1 LLVM_IAS=1
+          ls -lh out/arch/arm64/boot/
       - name: Upload Image
         uses: actions/upload-artifact@v4
         with:
           name: kernel
-          path: kernel-mtk/out/arch/arm64/boot/Image*
+          path: out/arch/arm64/boot/Image*
