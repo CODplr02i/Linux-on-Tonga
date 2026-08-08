@@ -1,48 +1,33 @@
 name: Tonga Kernel Build
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+on: [push]
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v5
       - name: Install deps
+        run: sudo apt update && sudo apt install -y bc bison flex libssl-dev libelf-dev dwarves python3 cpio gcc-aarch64-linux-gnu
+      - name: Fix source bugs
         run: |
-          sudo apt update
-          sudo apt install -y build-essential clang-15 lld-15 llvm-15 bc bison flex libssl-dev libelf-dev dwarves python3 cpio gcc-aarch64-linux-gnu
-          sudo ln -sf /usr/bin/clang-15 /usr/bin/clang
-          sudo ln -sf /usr/bin/ld.lld-15 /usr/bin/ld.lld
-          for t in ar nm objcopy objdump strip; do sudo ln -sf /usr/bin/llvm-${t}-15 /usr/bin/llvm-${t}; done
-      - name: Patch defconfig + source
-        run: |
-          # fix defconfig to enable NO_HZ
+          sed -i 's/if (!atomic_fetch_or(NOHZ_KICK_MASK, nohz_flags(cpu)))/if (0)/' kernel/sched/core.c || true
+          sed -i 's/static inline bool prefer_spread_on_idle(int cpu)/static inline bool prefer_spread_on_idle(int cpu, bool __unused)/' kernel/sched/walt.h || true
+          grep -q "^int alarm_debug" kernel/time/alarmtimer.c || sed -i '1i int alarm_debug=0;' kernel/time/alarmtimer.c
           echo "CONFIG_NO_HZ_COMMON=y" >> arch/arm64/configs/vendor/tonga_halium_defconfig
           echo "CONFIG_NO_HZ_IDLE=y" >> arch/arm64/configs/vendor/tonga_halium_defconfig
           echo "CONFIG_NO_HZ=y" >> arch/arm64/configs/vendor/tonga_halium_defconfig
-          # also fix source if still fails
-          sed -i 's/if (!atomic_fetch_or(NOHZ_KICK_MASK, nohz_flags(cpu)))/if (0)/' kernel/sched/core.c || true
-      - name: Build
+      - name: Build GCC
         run: |
           export ARCH=arm64
           export CROSS_COMPILE=aarch64-linux-gnu-
-          export CLANG_TRIPLE=aarch64-linux-gnu-
-          make mrproper
           rm -rf out; mkdir out
           make O=out vendor/tonga_halium_defconfig
           make O=out olddefconfig
-          make O=out -j$(nproc) CC=clang LLVM=1 LLVM_IAS=1 2>&1 | tee build.log
+          make O=out -j4 2>&1 | tee build.log
           ls -lh out/arch/arm64/boot/
-      - name: Upload log
-        if: failure()
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: build-log
-          path: build.log
-      - name: Upload Image
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: kernel
-          path: out/arch/arm64/boot/Image*
+          name: result
+          path: |
+            out/arch/arm64/boot/
+            build.log
